@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+// Definition for a binary tree node.
 class TreeNode {
     int value;
     TreeNode left, right;
@@ -15,6 +16,7 @@ class TreeNode {
 }
 
 public class b_FindNearest {
+    // Function to find the x closest values to the target in the binary tree
     public List<Integer> closestValues(TreeNode root, double target, int x) {
         List<Integer> result = new ArrayList<>();
         Stack<Integer> predecessorStack = new Stack<>();
@@ -24,7 +26,7 @@ public class b_FindNearest {
         inorderTraversal(root, target, false, predecessorStack);
         inorderTraversal(root, target, true, successorStack);
 
-        // Merge the stacks to find the x closest valueues
+        // Merge the stacks to find the x closest values
         while (x-- > 0) {
             if (predecessorStack.isEmpty()) {
                 result.add(successorStack.pop());
@@ -40,6 +42,7 @@ public class b_FindNearest {
         return result;
     }
 
+    // Function to perform an in-order traversal of the binary tree
     private static void inorderTraversal(TreeNode root, double target, boolean reverse, Stack<Integer> stack) {
         if (root == null) {
             return;
@@ -56,9 +59,11 @@ public class b_FindNearest {
 
             current = nodeStack.pop();
 
+            // If the current value is greater than the target and we are not reversing, break
             if (!reverse && current.value > target) {
                 break;
             }
+            // If the current value is less than or equal to the target and we are reversing, break
             if (reverse && current.value <= target) {
                 break;
             }

@@ -36,4 +36,14 @@ public class a_MinimumCost {
 
         return minimumcost;
     }
+
+    public static void main(String[] args) {
+        a_MinimumCost object=new a_MinimumCost();
+        int[][] input = {
+            { 1, 3, 2 },
+            { 4, 6, 8 },
+            { 3, 1, 5 }
+    };
+    System.out.println("Minimum cost: "+object.minimumCostfinder(input));
+    }
 }
